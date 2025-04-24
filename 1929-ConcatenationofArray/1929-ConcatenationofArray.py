@@ -1,4 +1,4 @@
-# Last updated: 4/19/2025, 5:34:46 PM
+# Last updated: 4/23/2025, 11:29:10 PM
 class Solution:
     def getConcatenation(self, nums: List[int]) -> List[int]:
         ans = nums + nums
