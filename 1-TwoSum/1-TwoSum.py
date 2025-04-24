@@ -1,27 +1,58 @@
-# Last updated: 3/28/2025, 12:01:10 AM
-# Approach:
-# Use a hash map to store each number's index as we iterate through the list.
-# For each number, check if the complement (target - current number) is already in the map; if it is, return the indices.
-# This ensures that we find the two indices in a single pass with constant-time lookups.
-
-# Time Complexity: O(n), where n is the number of elements in nums.
-# Space Complexity: O(n), due to the hash map storing up to n elements.
-
-
+# Last updated: 4/23/2025, 6:05:38 PM
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # Dictionary to store number and its index
-        num_to_index = {}
-        
-        # Loop through each number in the list
-        for i, num in enumerate(nums):
-            # Calculate the complement of the current number
-            complement = target - num
-            
-            # Check if the complement exists in the hash map
-            if complement in num_to_index:
-                # If found, return the indices of complement and current number
-                return [num_to_index[complement], i]
-            
-            # If not found, store the number and its index in the map
-            num_to_index[num] = i
+        prevMap = {}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
+
+
+
+
+
+
+'''
+        for i in range (len(nums)):
+            for j in range (i + 1, len(nums)):
+                if nums[i] + nums[j] == target:
+                    return i,j
+
+
+Input: nums = [2,3,7,10]
+Output: [0,1]
+
+Input: nums = [11, 13, 19, 20]
+Output: [2,3]
+i = 0 = 2
+j = (1+0) = 3
+nums[i] = 2
+nums[j] = 3
+if something == something_else
+2,3,7,10
+(2 + 1 ) == 3
+
+2  == 3 - 1
+    
+    
+    
+    
+    -----
+i = 0 = 3
+j = (1+1) = 2 = 4
+target = 6
+nums[i] = 3
+nums[j] = 4
+if false 6 == 3 + 4
+
+--------
+
+i = 1 = 2
+j = (1+1) = 2 = 4
+target = 6
+nums[i] = 3
+nums[j] = 4
+if true 6 == 2 + 4
+return 1,2
+'''
