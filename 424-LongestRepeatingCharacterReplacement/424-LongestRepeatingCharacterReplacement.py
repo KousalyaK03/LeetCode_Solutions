@@ -1,22 +1,26 @@
-# Last updated: 6/26/2025, 4:56:49 PM
+# Last updated: 6/29/2025, 3:48:43 PM
 class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
-        count = [0] * 26
-        left = 0
-        max_count = 0
-        max_len = 0
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        len_s1 = len(s1)
+        len_s2 = len(s2)
+        if len_s1 > len_s2:
+            return False
+        s1_count = Counter(s1)
+        window_count = Counter(s2[:len_s1])
 
-        for right in range(len(s)):
-            index = ord(s[right]) - ord('A')
-            count[index] += 1
-            max_count = max(max_count, count[index])
+        if window_count == s1_count:
+            return True
+        
+        for i in range(len_s1, len_s2):
+            start_char = s2[i-len_s1]
+            new_char = s2[i]
 
-            window_len = right - left + 1
-            changes = window_len - max_count
+            window_count[new_char] += 1
+            window_count[start_char] -= 1
 
-            if changes > k:
-                count[ord(s[left]) - ord('A')] -= 1
-                left += 1
-            max_len = max(max_len, right - left + 1)
+            if window_count[start_char] == 0:
+                del window_count[start_char]
 
-        return max_len
+            if window_count == s1_count:
+                return True
+        return False
