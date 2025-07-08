@@ -1,4 +1,4 @@
-# Last updated: 7/8/2025, 2:30:53 PM
+# Last updated: 7/8/2025, 2:45:27 PM
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         gas = 0
@@ -7,5 +7,5 @@ class Solution:
                 return False
             elif n > gas:
                 gas = n
-            gas -= 1
+            gas = gas - 1
         return True
