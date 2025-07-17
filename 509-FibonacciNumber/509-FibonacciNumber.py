@@ -1,6 +1,18 @@
-# Last updated: 7/17/2025, 2:55:14 PM
+# Last updated: 7/17/2025, 3:00:36 PM
 class Solution:
-    def fib(self, n: int) -> int:
+    def fib(self, n: int, memo = {}) -> int:
+        if memo is None:
+            memo = {}
+
+        if n <= 1:
+            return n
+        if n in memo:
+            return memo[n]
+        memo[n] = self.fib(n - 1, memo) + self.fib(n - 2, memo)
+        return memo[n]
+
+
+"""
         if n <= 1:
             return n
         prev1, prev2 = 1, 0
@@ -10,3 +22,5 @@ class Solution:
             prev1 = curr
 
         return prev1
+
+"""
