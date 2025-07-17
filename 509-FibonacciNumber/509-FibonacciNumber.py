@@ -1,6 +1,16 @@
-# Last updated: 7/17/2025, 3:00:36 PM
+# Last updated: 7/17/2025, 3:02:24 PM
 class Solution:
     def fib(self, n: int, memo = {}) -> int:
+        if n <= 1:
+            return n
+        dp = [0] * (n + 1)
+        dp[1] = 1
+        
+        for i in range(2, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2]
+        return dp[n]
+
+"""
         if memo is None:
             memo = {}
 
@@ -12,7 +22,7 @@ class Solution:
         return memo[n]
 
 
-"""
+
         if n <= 1:
             return n
         prev1, prev2 = 1, 0
