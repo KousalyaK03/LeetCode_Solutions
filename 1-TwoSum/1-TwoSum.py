@@ -1,6 +1,36 @@
-# Last updated: 4/23/2025, 6:05:38 PM
+# Last updated: 9/23/2025, 1:00:59 PM
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        num_index = {}
+
+        for i, num in enumerate((nums)):
+            complement = target -  num
+
+            if complement in num_index:
+                return [num_index[complement], i]
+            num_index[num] = i
+        return [-1, -1]
+
+        '''
+        num_index = {}
+        for i, num in enumerate((nums)):
+            complement = target - num
+            if complement in num_index:
+                return [num_index[complement], i]
+            num_index[num] = i
+
+     
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums))
+
+        n = len(nums)
+        for i in range(n): - O(n).          # O(n) * O(n) = O(n^2) + O(1)
+            for j in range(i + 1, n): - O(n)
+                if nums[i] + nums[j] == target: - O(1)
+                    return [i, j] - O(1)
+
+
         prevMap = {}
         for i, n in enumerate(nums):
             diff = target - n
@@ -8,16 +38,27 @@ class Solution:
                 return [prevMap[diff], i]
             prevMap[n] = i
 
-
-
-
-
-
-'''
         for i in range (len(nums)):
             for j in range (i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return i,j
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        numMap = {} - {2:0, 7:1, 11:2, 15:3}
+        n = len(nums)
+
+        # Build the hash table
+        for i in range(n): i = 0 to 3
+            numMap[nums[i]] = i
+
+        # Find the complement
+        for i in range(n): # i = 0
+            complement = target - nums[i]  = 9 - 2 = 7
+            if complement in numMap and numMap[complement] != i:
+                return [i, numMap[complement]]
+
+        return []  # No solution found
 
 
 Input: nums = [2,3,7,10]
