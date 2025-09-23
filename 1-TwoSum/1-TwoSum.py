@@ -1,4 +1,4 @@
-# Last updated: 9/23/2025, 1:00:59 PM
+# Last updated: 9/23/2025, 1:01:03 PM
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
@@ -10,7 +10,7 @@ class Solution:
             if complement in num_index:
                 return [num_index[complement], i]
             num_index[num] = i
-        return [-1, -1]
+        
 
         '''
         num_index = {}
